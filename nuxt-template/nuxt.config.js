@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '{{ name }}',
+    title: 'blog ta2mo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,8 +24,8 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
+    extend(config, { isDev }) {
+      if (isDev && process.Client) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -33,7 +33,18 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': {
+          warnings: false
+        }
+      }
     }
-  }
+  },
+  css: [
+    'bulma',
+    { src: '~assets/main.scss', lang: 'scss' }
+  ],
 }
 

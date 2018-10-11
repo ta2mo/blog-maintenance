@@ -17,5 +17,9 @@ module.exports = {
     'vue'
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    "indent": ["error", 2],
+    "no-tabs": 0,
+    "quotes": ["error", "single"]
+  }
 }
