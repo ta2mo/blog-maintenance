@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-8">
-          <Post/>
+          <PostList/>
         </div>
         <div class="column is-4">
           <Menu/>
@@ -16,13 +16,13 @@
 <script>
 import AppLogo from '~/components/AppLogo.vue'
 import Menu from '~/components/Menu.vue'
-import Post from '~/components/Post.vue'
+import PostList from '~/components/PostList.vue'
 
 export default {
   components: {
     AppLogo,
     Menu,
-    Post
+    PostList
   }
 }
 </script>

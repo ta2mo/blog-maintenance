@@ -6,7 +6,7 @@ comments: true
 categories:  "勉強会"
 ---
 
-# [Docker Meetup Tokyo #4](http://connpass.com/event/10318/)に参加してきたメモ
+[Docker Meetup Tokyo #4](http://connpass.com/event/10318/)に参加してきたメモ
 
 * 感想
   * 個人的にはDockerの監視がホットトピック。production環境で運用するためには必須。Host/Containerの両面みれるようにしないと監視対象が増えるだけでコストがペイしない。
