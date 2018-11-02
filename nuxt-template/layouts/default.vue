@@ -3,7 +3,9 @@
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">blog ta2mo</h1>
+          <nuxt-link to="/">
+            <h1 class="title">blog ta2mo</h1>
+          </nuxt-link>
         </div>
       </div>
     </section>

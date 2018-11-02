@@ -5,7 +5,8 @@ date: 2014-06-13 03:23:29 +0900
 comments: true
 categories: "勉強会"
 ---
-# [JJUG ナイトセミナー 「6.11 ドメイン駆動設計特集！ 」](http://www.java-users.jp/?p=1209)に参加しました。そのメモと感想。
+
+[JJUG ナイトセミナー 「6.11 ドメイン駆動設計特集！ 」](http://www.java-users.jp/?p=1209)に参加しました。そのメモと感想。
 
 <!-- more -->
 
