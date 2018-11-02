@@ -46,5 +46,10 @@ module.exports = {
     'bulma',
     { src: '~assets/main.scss', lang: 'scss' }
   ],
+  modules: [
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-48150028-1'
+    }]
+  ]
 }
 
