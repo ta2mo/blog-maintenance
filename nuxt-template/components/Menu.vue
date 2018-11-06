@@ -3,7 +3,6 @@
     <ul>
       <li><Profile/></li>
       <li><NewPost/></li>
-      <li><AllPost/></li>
       <li><Category/></li>
     </ul>
   </aside>
