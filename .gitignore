@@ -77,3 +77,10 @@ fabric.properties
 # dep
 vendor/
 .idea/
+
+# generated files
+blog-maintenance
+nuxt-template/pages/post/*.vue
+nuxt-template/components/PostList.vue
+nuxt-template/components/sidebar/NewPost.vue
+nuxt-template/components/sidebar/Category.vue

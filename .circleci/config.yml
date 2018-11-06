@@ -37,6 +37,9 @@ jobs:
       - run:
           name: build
           command: go build
+      - run:
+          name: generate
+          command: ./blog-maintenance generate
       - save_cache:
           key: build-cache-{{ .Branch }}--{{ .Revision }}
           paths:
@@ -70,3 +73,7 @@ workflows:
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - master
