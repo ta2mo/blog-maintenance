@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-8">
+        <div class="column is-9">
           <div class="content is-medium">
             <div class="box">
               <span class="lable is-medium">2014-02-20</span>
@@ -161,7 +161,7 @@ Eclipseの紹介：DBFlute 久保 雅彦氏 (jflute)</h2>
             </div>
           </nav>
         </div>
-        <div class="column is-4">
+        <div class="column is-3">
           <Menu/>
         </div>
       </div>

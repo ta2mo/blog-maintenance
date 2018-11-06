@@ -2,10 +2,10 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-8">
+        <div class="column is-9">
           <PostList/>
         </div>
-        <div class="column is-4">
+        <div class="column is-3">
           <Menu/>
         </div>
       </div>

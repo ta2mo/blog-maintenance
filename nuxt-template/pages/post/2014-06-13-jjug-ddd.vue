@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-8">
+        <div class="column is-9">
           <div class="content is-medium">
             <div class="box">
               <span class="lable is-medium">2014-06-13</span>
@@ -245,7 +245,7 @@ DDDで実践する時に役に立つ話し by 加藤 潤一氏</h1>
             </div>
           </nav>
         </div>
-        <div class="column is-4">
+        <div class="column is-3">
           <Menu/>
         </div>
       </div>

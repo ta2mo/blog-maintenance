@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-8">
+        <div class="column is-9">
           <div class="content is-medium">
             <div class="box">
               <span class="lable is-medium">2014-08-31</span>
@@ -246,7 +246,7 @@ API Meetup Tokyo #2</h1>
             </div>
           </nav>
         </div>
-        <div class="column is-4">
+        <div class="column is-3">
           <Menu/>
         </div>
       </div>

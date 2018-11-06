@@ -15,15 +15,11 @@
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-import Menu from '~/components/Menu.vue'
 import PostList from '~/components/PostList.vue'
 
 export default {
   name: 'Posts',
   components: {
-    AppLogo,
-    Menu,
     PostList
   }
 
