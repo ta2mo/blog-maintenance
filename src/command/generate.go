@@ -25,6 +25,11 @@ const (
 	nuxtComponentDir = "./nuxt-template/components/"
 
 	separatorLine = "^-*-$"
+
+	SidebarDir  = "sidebar/"
+	AllPostVue  = "AllPost.vue"
+	NewPostVue  = "NewPost.vue"
+	PostListVue = "postList.vue"
 )
 
 type Post struct {
@@ -104,31 +109,25 @@ func Generate(context *cli.Context) error {
 		postTemplate.Execute(f, params)
 	}
 
-	postListTemplate := template.Must(template.ParseFiles(templateDir + "postList.vue"))
-	f, err := os.Create(nuxtComponentDir + "postList.vue")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-	postListTemplate.Execute(f, posts[:5])
-
-	newPostsTemplate := template.Must(template.ParseFiles(templateDir + "NewPost.vue"))
-	f, err = os.Create(nuxtComponentDir + "sidebar/NewPost.vue")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-	newPostsTemplate.Execute(f, posts[:5])
-
-	allPostsTemplate := template.Must(template.ParseFiles(templateDir + "AllPost.vue"))
-	f, err = os.Create(nuxtComponentDir + "sidebar/AllPost.vue")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-	allPostsTemplate.Execute(f, posts)
+	renderComponent(posts[:5], PostListVue, nuxtComponentDir+PostListVue)
+	renderSidebar(posts[:5], NewPostVue)
+	renderSidebar(posts, AllPostVue)
 
 	return nil
+}
+
+func renderSidebar(posts []Post, templateFileName string) {
+	renderComponent(posts, templateFileName, nuxtComponentDir+SidebarDir+templateFileName)
+}
+
+func renderComponent(posts []Post, templateFileName string, outputFilePath string) {
+	template := template.Must(template.ParseFiles(templateDir + templateFileName))
+	f, err := os.Create(outputFilePath)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	template.Execute(f, posts)
 }
 
 func ls(dirName string) ([]string, error) {
