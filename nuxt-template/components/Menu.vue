@@ -4,21 +4,22 @@
       <li><Profile/></li>
       <li><NewPost/></li>
       <li><AllPost/></li>
+      <li><Category/></li>
     </ul>
   </aside>
 </template>
 
 <script>
-import Profile from '~/components/sidebar/Profile.vue'
-import NewPost from '~/components/sidebar/NewPost.vue'
-import AllPost from '~/components/sidebar/AllPost.vue'
+import Category from '~/components/sidebar/Category.vue'
+import NewPost  from '~/components/sidebar/NewPost.vue'
+import Profile  from '~/components/sidebar/Profile.vue'
 
 export default {
   name: 'Menu',
   components: {
-    Profile,
+    Category,
     NewPost,
-    AllPost,
+    Profile,
   }
 }
 </script>
