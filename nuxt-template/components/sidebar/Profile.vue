@@ -12,6 +12,9 @@
         Go, Java, JavaScript, Scala
         </p>
       </div>
+      <div class="content">
+        <p>comment, typo→<a href="https://github.com/ta2mo/ta2mo.github.io/issues" target="_blank">github issues</a></p>
+      </div>
     </div>
   </div>
 </template>
