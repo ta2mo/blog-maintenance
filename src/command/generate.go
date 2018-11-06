@@ -27,9 +27,11 @@ const (
 	separatorLine = "^-*-$"
 
 	SidebarDir  = "sidebar/"
-	AllPostVue  = "AllPost.vue"
 	NewPostVue  = "NewPost.vue"
-	PostListVue = "postList.vue"
+	PostListVue = "PostList.vue"
+	CategoryVue = "Category.vue"
+
+	otherCategory = "その他"
 )
 
 type Post struct {
@@ -111,9 +113,31 @@ func Generate(context *cli.Context) error {
 
 	renderComponent(posts[:5], PostListVue, nuxtComponentDir+PostListVue)
 	renderSidebar(posts[:5], NewPostVue)
-	renderSidebar(posts, AllPostVue)
+	renderCategory(posts, CategoryVue)
 
 	return nil
+}
+
+func renderCategory(posts []Post, templateFileName string) {
+	template := template.Must(template.ParseFiles(templateDir + templateFileName))
+	f, err := os.Create(nuxtComponentDir + SidebarDir + templateFileName)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	m := map[string][]Post{}
+	for _, post := range posts {
+		for _, category := range post.Header.Categories {
+			if category == "" {
+				m[otherCategory] = append(m[category], post)
+			} else {
+				m[category] = append(m[category], post)
+			}
+		}
+	}
+
+	template.Execute(f, m)
 }
 
 func renderSidebar(posts []Post, templateFileName string) {
