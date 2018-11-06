@@ -17,6 +17,10 @@ func main() {
 		switch context.Args().Get(0) {
 		case "generate", "gen":
 			command.Generate(context)
+		case "new", "n":
+			if err := command.NewPost(context); err != nil {
+				return err
+			}
 		default:
 			cli.ShowAppHelp(context)
 		}
