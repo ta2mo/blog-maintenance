@@ -24,7 +24,7 @@ func NewPost(context *cli.Context) error {
 	m := map[string]string{
 		"title":      title,
 		"categories": categories,
-		"date":       now.Format("2006-01-02 03:04:05"),
+		"date":       now.Format("2006-01-02 15:04:05"),
 	}
 	renderNewPost(m, "post/"+NewPostTemplate, PostDir+now.Format("2006-01-02-")+"new"+MarkdownExt)
 	return nil
