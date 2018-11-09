@@ -3,8 +3,8 @@ layout: post
 title: Nuxt.jsを使ってブログをリニューアルしました
 date: 2018-11-09 16:00:00 +0900
 comments: true
-tags: Nuxt.js,golang,CircleCI,tech
-categories: ブログ
+tags: Nuxt.js,golang,CircleCI,tech,blog
+categories: Tech
 ---
 
 <!-- write here ↓ -->
