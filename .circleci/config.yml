@@ -52,28 +52,72 @@ jobs:
           root: /
           paths:
             - tmp/go/cache
-            - go/src/github.com/ta2mo/blog-maintenance/artifacts
-  deploy:
-    working_directory: /go/src/github.com/ta2mo/blog-maintenance
+            - go/src/github.com/ta2mo/blog-maintenance
+  generate:
     docker:
-      - image: circleci/golang:1.11
+      - image: circleci/node:latest-browsers
     steps:
-      - checkout
       - attach_workspace:
           at: .
       - run:
+          name: yarn
+          command: yarn install
+          working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
+      - run:
+          name: generate
+          command: yarn run generate
+          working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
+      - save_cache:
+          key: build-cache-vendor-{{ .Branch }}--{{ .Revision }}
+          paths:
+          - go/src/github.com/ta2mo/blog-maintenance/nuxt-template/nuxt-template/node_modules
+          when: on_fail
+      - persist_to_workspace:
+          root: go/src/github.com/ta2mo/blog-maintenance
+          paths:
+            - nuxt-template/dist/*
+      - store_artifacts:
+          path: nuxt-template
+  deploy:
+    docker:
+      - image: circleci/golang:1.11
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: clone
+          command: git clone --depth 1 https://${GITHUB_TOKEN}@github.com/ta2mo/ta2mo.github.io.git
+      - run:
+          name: copy
+          command: cp -R nuxt-template/dist/* ta2mo.github.io/
+      - run:
           name: deploy
-          command: echo "deploy"
+          command: |
+            git config credential.helper 'cache --timeout=120'
+            git config user.email $EMAIL
+            git config user.name ta2mo
+            git add --all
+            git commit -m "update via circleci"
+            git pull -q https://${GITHUB_TOKEN}@github.com/ta2mo/ta2mo.github.io.git HEAD
+            git push -q https://${GITHUB_TOKEN}@github.com/ta2mo/ta2mo.github.io.git HEAD
+          working_directory: ta2mo.github.io
+      - store_artifacts:
+          path: nuxt-template
 
 workflows:
   version: 2
   build:
     jobs:
       - build
-      - deploy:
+      - generate:
           requires:
             - build
           filters:
             branches:
-              only:
-                - master
+              only: master
+      - deploy:
+          requires:
+            - generate
+          filters:
+            branches:
+              only: master
