@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Nuxt.jsを使ってブログをリニューアルしました
-date: 2018-11-06 06:48:25 +0900
+date: 2018-11-09 16:00:00 +0900
 comments: true
 tags: Nuxt.js,golang,CircleCI,tech
 categories: ブログ
@@ -14,7 +14,7 @@ categories: ブログ
 [https://github.com/ta2mo/blog-maintenance](https://github.com/ta2mo/blog-maintenance)
 
 自分が気に入っている技術を集めて好きなようにブログを書ける環境をつくりましたが、ふんわりと考えた要件としては
-- 投稿はmarkdownで書いてgit管理→GitHub管理
+- 投稿内容はmarkdownで書いてgit管理→GitHub管理
 - そこそこリッチかつ、ベストプラクティスを踏襲したページにしたい→Nuxt.js
 - 配信とかビルド周りといった足回りは無料でやりたい→GitHub Pages、CircleCI
 
@@ -27,7 +27,7 @@ categories: ブログ
     - [cli](https://github.com/urfave/cli)
 - CircleCI
 
-詳細はリポジトリにあるのでそちらでご確認ください。
+詳細は[リポジトリ](https://github.com/ta2mo/blog-maintenance)の方をご確認ください。
 
 ## 大まかな概要
 
