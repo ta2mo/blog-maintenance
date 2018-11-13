@@ -26,10 +26,10 @@ const (
 
 	separatorLine = "^-*-$"
 
-	SidebarDir  = "sidebar/"
-	NewPostVue  = "NewPost.vue"
-	PostListVue = "PostList.vue"
-	CategoryVue = "Category.vue"
+	SidebarDir    = "sidebar/"
+	RecentPostVue = "RecentPost.vue"
+	PostListVue   = "PostList.vue"
+	CategoryVue   = "Category.vue"
 
 	otherCategory = "その他"
 )
@@ -112,7 +112,7 @@ func Generate(context *cli.Context) error {
 	}
 
 	renderComponent(posts[:5], PostListVue, nuxtComponentDir+PostListVue)
-	renderSidebar(posts[:5], NewPostVue)
+	renderSidebar(posts[:5], RecentPostVue)
 	renderCategory(posts, CategoryVue)
 
 	return nil

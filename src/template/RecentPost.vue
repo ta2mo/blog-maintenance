@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <p class="menu-label">New posts</p>
+      <p class="menu-label">Recent posts</p>
       <ul class="menu-list">
         {{ range . }}
         <li>
