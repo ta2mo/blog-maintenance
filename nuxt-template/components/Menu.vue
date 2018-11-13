@@ -2,7 +2,7 @@
   <aside class="menu">
     <ul>
       <li><Profile/></li>
-      <li><NewPost/></li>
+      <li><RecentPost/></li>
       <li><Category/></li>
     </ul>
   </aside>
@@ -10,14 +10,14 @@
 
 <script>
 import Category from '~/components/sidebar/Category.vue'
-import NewPost  from '~/components/sidebar/NewPost.vue'
+import RecentPost  from '~/components/sidebar/RecentPost.vue'
 import Profile  from '~/components/sidebar/Profile.vue'
 
 export default {
   name: 'Menu',
   components: {
     Category,
-    NewPost,
+    RecentPost,
     Profile,
   }
 }
