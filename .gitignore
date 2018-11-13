@@ -82,5 +82,5 @@ vendor/
 blog-maintenance
 /nuxt-template/pages/post/*.vue
 /nuxt-template/components/PostList.vue
-/nuxt-template/components/sidebar/NewPost.vue
+/nuxt-template/components/sidebar/RecentPost.vue
 /nuxt-template/components/sidebar/Category.vue
