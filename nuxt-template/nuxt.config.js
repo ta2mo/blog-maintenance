@@ -49,7 +49,13 @@ module.exports = {
   modules: [
     ['@nuxtjs/google-analytics', {
       id: 'UA-48150028-1'
-    }]
-  ]
+    }],
+    '@nuxtjs/sitemap'
+  ],
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://ta2mo.github.io',
+    generate: true,
+  }
 }
 
