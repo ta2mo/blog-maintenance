@@ -9,7 +9,18 @@
         </div>
       </div>
     </section>
-    <nuxt/>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-9">
+            <nuxt/>
+          </div>
+          <div class="column is-3">
+            <Menu/>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
@@ -20,6 +31,22 @@
   </div>
 </template>
 
+<script>
+import Menu from '~/components/Menu.vue'
+
+export default {
+  components: {
+    Menu
+  }
+}
+</script>
+
 <style scoped>
+.page-enter-active, .page-leave-active {
+  transition: opacity .4s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
 </style>
 
