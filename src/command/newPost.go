@@ -1,6 +1,8 @@
 package command
 
 import (
+	"bufio"
+	"fmt"
 	"github.com/urfave/cli"
 	"os"
 	"text/template"
@@ -15,18 +17,31 @@ const (
 
 func NewPost(context *cli.Context) error {
 	now := time.Now()
-	title := context.Args().Get(1)
-	if len(title) == 0 {
-		return cli.NewExitError("Please input title.", 1)
+	var title string
+
+	fmt.Println("Please input post information.")
+	fmt.Print("post title       : ")
+	sc := bufio.NewScanner(os.Stdin)
+	for sc.Scan() {
+		title = sc.Text()
+		break
 	}
-	categories := context.Args().Get(2)
+
+	fmt.Print("post categories  : ")
+	var categories string
+	for sc.Scan() {
+		categories = sc.Text()
+		break
+	}
 
 	m := map[string]string{
 		"title":      title,
 		"categories": categories,
 		"date":       now.Format("2006-01-02 15:04:05"),
 	}
-	renderNewPost(m, "post/"+NewPostTemplate, PostDir+now.Format("2006-01-02-")+"new"+MarkdownExt)
+	fileName := PostDir + now.Format("2006-01-02-") + "new" + MarkdownExt
+	renderNewPost(m, "post/"+NewPostTemplate, fileName)
+	fmt.Println("generete success : ./" + fileName)
 	return nil
 }
 
