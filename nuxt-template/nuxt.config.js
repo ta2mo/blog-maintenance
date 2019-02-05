@@ -47,7 +47,6 @@ module.exports = {
     { src: '~assets/main.scss', lang: 'scss' }
   ],
   modules: [
-    '@nuxtjs/google-analytics',
     '@nuxtjs/sitemap'
   ],
   sitemap: {
@@ -55,7 +54,7 @@ module.exports = {
     hostname: 'https://ta2mo.github.io',
     generate: true,
   },
-  'google-analytics': {
-    id: 'UA-48150028-1'
-  }
+  plugins: [
+    { src: '~plugins/ga.js', ssr: false }
+  ]
 }
