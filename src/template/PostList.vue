@@ -10,6 +10,7 @@
           {{ .Content }}
       </div>
     </div>
+    <adsbygoogle />
     {{ end }}
   </div>
 </template>
