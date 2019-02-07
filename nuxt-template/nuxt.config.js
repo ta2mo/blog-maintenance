@@ -56,8 +56,5 @@ module.exports = {
     path: '/sitemap.xml',
     hostname: 'https://ta2mo.github.io',
     generate: true,
-  },
-  plugins: [
-    { src: '~plugins/ga.js', ssr: false }
-  ]
+  }
 }
