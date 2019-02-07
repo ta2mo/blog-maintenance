@@ -8,6 +8,7 @@
           {{ .post.Content }}
         </div>
       </div>
+      <adsbygoogle />
     </div>
     <nav class="level">
       <div class="level-left is-left">
