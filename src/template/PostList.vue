@@ -34,4 +34,8 @@ export default {
   div.box {
     border-radius: 0;
   }
+
+  ins {
+    margin-bottom: 24px;
+  }
 </style>
