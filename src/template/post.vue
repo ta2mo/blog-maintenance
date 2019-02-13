@@ -7,8 +7,8 @@
         <div class="content">
           {{ .post.Content }}
         </div>
+        <adsbygoogle />
       </div>
-      <adsbygoogle />
     </div>
     <nav class="level">
       <div class="level-left is-left">
@@ -51,5 +51,10 @@ export default {
   }
   div.box {
     border-radius: 0px;
+  }
+
+  ins {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 </style>

@@ -9,8 +9,8 @@
       <div class="content">
           {{ .Content }}
       </div>
+      <adsbygoogle />
     </div>
-    <adsbygoogle />
     {{ end }}
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
   }
 
   ins {
-    margin-bottom: 24px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 </style>
