@@ -1,0 +1,20 @@
+image: gitpod/workspace-full:latest
+ports:
+- port: 3000
+checkoutLocation: "src/github.com/ta2mo/blog-maintenance"
+workspaceLocation: "."
+tasks:
+  - init: >
+      cd /workspace/src/github.com/ta2mo/blog-maintenance &&
+      export GOPATH=$GOPATH:/workspace &&
+      mkdir -p /workspace/bin &&
+      curl https://raw.githubusercontent.com/golang/dep/master/install.sh | bash &&
+      cd nuxt-template &&
+      yarn
+    command: >
+      cd /workspace/src/github.com/ta2mo/blog-maintenance &&
+      dep ensure &&
+      go build -o blog &&
+      ./blog gen &&
+      cd nuxt-template &&
+      yarn run dev
