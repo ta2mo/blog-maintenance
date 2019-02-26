@@ -19,10 +19,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Profile'
-}
+<script lang="ts">
 </script>
 
 <style scoped>

@@ -8,18 +8,25 @@
   </aside>
 </template>
 
-<script>
+<script lang="ts">
+import {
+  Component,
+  Vue
+} from "nuxt-property-decorator"
 import Category from '~/components/sidebar/Category.vue'
 import RecentPost  from '~/components/sidebar/RecentPost.vue'
 import Profile  from '~/components/sidebar/Profile.vue'
+const _default: Vue
 
-export default {
-  name: 'Menu',
+@Component({
   components: {
     Category,
     RecentPost,
-    Profile,
+    Profile
   }
+})
+
+export default class extends Vue {
 }
 </script>
 

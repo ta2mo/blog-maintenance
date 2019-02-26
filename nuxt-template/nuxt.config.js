@@ -1,4 +1,29 @@
+import parseArgs from "minimist";
+
+const argv = parseArgs(process.argv.slice(2), {
+  alias: {
+    H: "hostname",
+    p: "port"
+  },
+  string: ["H"],
+  unknown: parameter => false
+})
+
+const port =
+  argv.port ||
+  process.env.PORT ||
+  process.env.npm_package_config_nuxt_port ||
+  "13000"
+const host =
+  argv.hostname ||
+  process.env.HOST ||
+  process.env.npm_package_config_nuxt_host ||
+  "localhost"
+
+/*
 module.exports = {
+*/
+export default {
   /*
   ** Headers of the page
   */
@@ -22,27 +47,22 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
-  ** Build configuration
+  ** Run ESLint on save
   */
-  build: {
-    /*
-    ** Run ESLint on save
-    */
-    extend(config, { isDev }) {
-      if (isDev && process.Client) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    },
-    postcss: {
-      plugins: {
-        'postcss-custom-properties': {
-          warnings: false
-        }
+  extend(config, { isDev }) {
+    if (isDev && process.Client) {
+      config.module.rules.push({
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /(node_modules)/
+      })
+    }
+  },
+  postcss: {
+    plugins: {
+      'postcss-custom-properties': {
+        warnings: false
       }
     }
   },

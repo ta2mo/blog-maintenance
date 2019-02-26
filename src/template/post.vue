@@ -35,13 +35,20 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {
+  Component,
+  Vue
+} from "nuxt-property-decorator"
 import Menu from '~/components/Menu.vue'
 
-export default {
-  components: {
-    Menu
-  }
+@Component({
+    components: {
+        Menu
+    }
+})
+
+export default class extends Vue {
 }
 </script>
 

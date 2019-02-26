@@ -2,13 +2,20 @@
   <PostList/>
 </template>
 
-<script>
+<script lang="ts">
+import {
+  Component,
+  Vue
+} from "nuxt-property-decorator"
 import PostList from '~/components/PostList.vue'
 
-export default {
+@Component({
   components: {
     PostList
   }
+})
+
+export default class extends Vue {
 }
 </script>
 

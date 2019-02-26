@@ -36,12 +36,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'TagList'
-}
-</script>
-
 <style scoped>
   .nuxt-link-active {
     background: hsl(0, 0%, 96%);
