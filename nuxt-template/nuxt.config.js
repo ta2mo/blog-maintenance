@@ -1,11 +1,11 @@
-import parseArgs from "minimist";
+import * as parseArgs from 'minimist';
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
-    H: "hostname",
-    p: "port"
+    H: 'hostname',
+    p: 'port'
   },
-  string: ["H"],
+  string: ['H'],
   unknown: parameter => false
 })
 
@@ -13,12 +13,12 @@ const port =
   argv.port ||
   process.env.PORT ||
   process.env.npm_package_config_nuxt_port ||
-  "13000"
+  '13000'
 const host =
   argv.hostname ||
   process.env.HOST ||
   process.env.npm_package_config_nuxt_host ||
-  "localhost"
+  'localhost'
 
 /*
 module.exports = {
