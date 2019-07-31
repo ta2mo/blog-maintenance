@@ -83,5 +83,8 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://ta2mo.github.io',
     generate: true,
+    filter ({ routes }) {
+      return routes.map(route => route.url = `${route.url}/`)
+    },
   }
 }
