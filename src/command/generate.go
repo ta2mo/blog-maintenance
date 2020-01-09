@@ -5,6 +5,7 @@ import (
 	"github.com/microcosm-cc/bluemonday"
 	_ "github.com/russross/blackfriday"
 	"github.com/shurcooL/github_flavored_markdown"
+	"github.com/ta2mo/blog-maintenance/src/model"
 	"github.com/urfave/cli"
 	"io/ioutil"
 	"os"
@@ -34,50 +35,12 @@ const (
 	otherCategory = "その他"
 )
 
-type Post struct {
-	FileName string
-	Header   PostHeader
-	Content  string
-}
-
-type PostHeader struct {
-	Layout     string
-	Title      string
-	Date       time.Time
-	Comments   string
-	Categories []string
-	Tags       []string
-}
-
 var reg = regexp.MustCompile(separatorLine)
 
 func Generate(context *cli.Context) error {
-	fileNames, err := ls(postDir)
+	posts, err := MappingFromFiles(postDir)
 	if err != nil {
-		return err
-	}
-
-	var files []os.File
-	var errors []error
-	for _, name := range fileNames {
-		func() {
-			file, err := os.Open(postDir + "/" + name)
-
-			if err != nil {
-				errors = append(errors, err)
-			} else {
-				files = append(files, *file)
-			}
-		}()
-	}
-
-	var posts []Post
-	for _, file := range files {
-		func() {
-			post := parseFile(&file)
-			posts = append(posts, *post)
-		}()
-		defer file.Close()
+		return nil
 	}
 
 	sort.Slice(posts, func(i int, j int) bool {
@@ -92,12 +55,12 @@ func Generate(context *cli.Context) error {
 		}
 		defer f.Close()
 
-		var olderPost *Post
+		var olderPost *model.Post
 		if len(posts) > i+1 {
 			olderPost = &posts[i+1]
 		}
 
-		var newerPost *Post
+		var newerPost *model.Post
 		if i > 0 {
 			newerPost = &posts[i-1]
 		}
@@ -118,7 +81,38 @@ func Generate(context *cli.Context) error {
 	return nil
 }
 
-func renderCategory(posts []Post, templateFileName string) {
+func MappingFromFiles(targetDir string) ([]model.Post, error) {
+	fileNames, err := ls(targetDir)
+	if err != nil {
+		return nil, err
+	}
+
+	var files []os.File
+	var errors []error
+	for _, name := range fileNames {
+		func() {
+			file, err := os.Open(targetDir + "/" + name)
+
+			if err != nil {
+				errors = append(errors, err)
+			} else {
+				files = append(files, *file)
+			}
+		}()
+	}
+
+	var posts []model.Post
+	for _, file := range files {
+		func() {
+			post := parseFile(&file)
+			posts = append(posts, *post)
+		}()
+		defer file.Close()
+	}
+	return posts, nil
+}
+
+func renderCategory(posts []model.Post, templateFileName string) {
 	template := template.Must(template.ParseFiles(templateDir + templateFileName))
 	f, err := os.Create(nuxtComponentDir + SidebarDir + templateFileName)
 	if err != nil {
@@ -126,7 +120,7 @@ func renderCategory(posts []Post, templateFileName string) {
 	}
 	defer f.Close()
 
-	m := map[string][]Post{}
+	m := map[string][]model.Post{}
 	for _, post := range posts {
 		for _, category := range post.Header.Categories {
 			if category == "" {
@@ -140,11 +134,11 @@ func renderCategory(posts []Post, templateFileName string) {
 	template.Execute(f, m)
 }
 
-func renderSidebar(posts []Post, templateFileName string) {
+func renderSidebar(posts []model.Post, templateFileName string) {
 	renderComponent(posts, templateFileName, nuxtComponentDir+SidebarDir+templateFileName)
 }
 
-func renderComponent(posts []Post, templateFileName string, outputFilePath string) {
+func renderComponent(posts []model.Post, templateFileName string, outputFilePath string) {
 	template := template.Must(template.ParseFiles(templateDir + templateFileName))
 	f, err := os.Create(outputFilePath)
 	if err != nil {
@@ -171,8 +165,8 @@ func ls(dirName string) ([]string, error) {
 	return fileNames, nil
 }
 
-func parseFile(file *os.File) *Post {
-	post := Post{}
+func parseFile(file *os.File) *model.Post {
+	post := model.Post{}
 	s := bufio.NewScanner(file)
 
 	rep := regexp.MustCompile(`.markdown$|.md$`)
@@ -196,12 +190,14 @@ func parseFile(file *os.File) *Post {
 	if len(post.Content) > 0 {
 		output := bluemonday.UGCPolicy().SanitizeBytes(github_flavored_markdown.Markdown([]byte(post.Content)))
 		post.Content = *(*string)(unsafe.Pointer(&output))
+		p := bluemonday.StrictPolicy().Sanitize(post.Content)
+		post.RowContent = p
 	}
 
 	return &post
 }
 
-func parseHeader(header *PostHeader, line string) {
+func parseHeader(header *model.PostHeader, line string) {
 	l := strings.SplitN(line, ":", 2)
 	switch {
 	case l[0] == "layout":

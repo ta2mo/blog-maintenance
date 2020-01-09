@@ -16,9 +16,15 @@ func main() {
 	app.Action = func(context *cli.Context) error {
 		switch context.Args().Get(0) {
 		case "generate", "gen":
-			command.Generate(context)
+			if err := command.Generate(context); err != nil {
+				return err
+			}
 		case "new", "n":
 			if err := command.NewPost(context); err != nil {
+				return err
+			}
+		case "algolia", "a":
+			if err := command.GenerateAlgoliaRecord(context); err != nil {
 				return err
 			}
 		default:
