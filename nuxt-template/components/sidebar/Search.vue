@@ -28,7 +28,7 @@ import {
 } from 'nuxt-property-decorator'
 import index from '~/plugins/algolia_index'
 
-@Component()
+@Component
 export default class extends Vue {
   words: string = ''
   searchResult: any = {}
@@ -43,7 +43,7 @@ export default class extends Vue {
     index.search({
       query: this.words,
       highlightPreTag: '<em class="highlight">',
-      attributesToHighlight: 'content:100',
+      attributesToHighlight: ['content:100'],
     }).then(result => {
 
       this.setActive(result && result.hits.length > 0)

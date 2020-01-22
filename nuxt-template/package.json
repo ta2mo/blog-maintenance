@@ -33,6 +33,7 @@
     "typescript": "^3.3.3333"
   },
   "devDependencies": {
+    "@nuxt/typescript-build": "^0.5.6",
     "@types/algoliasearch": "^3.34.7",
     "@types/eslint": "^4.16.6",
     "@types/node-sass": "^3.10.32",

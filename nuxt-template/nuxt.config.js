@@ -1,4 +1,4 @@
-import * as parseArgs from 'minimist';
+import parseArgs from 'minimist';
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -24,6 +24,7 @@ const host =
 module.exports = {
 */
 export default {
+  buildModules: ['@nuxt/typescript-build'],
   /*
   ** Headers of the page
   */
