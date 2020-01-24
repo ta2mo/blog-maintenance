@@ -188,7 +188,7 @@ func parseFile(file *os.File) *model.Post {
 		panic(err)
 	}
 	if len(post.Content) > 0 {
-		output := bluemonday.UGCPolicy().SanitizeBytes(github_flavored_markdown.Markdown([]byte(post.Content)))
+		output := github_flavored_markdown.Markdown([]byte(post.Content))
 		post.Content = *(*string)(unsafe.Pointer(&output))
 		p := bluemonday.StrictPolicy().Sanitize(post.Content)
 		post.RowContent = p
