@@ -55,6 +55,7 @@ jobs:
       - persist_to_workspace:
           root: go/src/github.com/ta2mo/blog-maintenance
           paths:
+            - blog-maintenance
             - nuxt-template/dist/*
       - store_artifacts:
           path: nuxt-template
@@ -64,6 +65,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - run:
+          name: update index
+          command: ./blog-maintenance algolia
       - run:
           name: clone
           command: git clone --depth 1 https://${GITHUB_TOKEN}@github.com/ta2mo/ta2mo.github.io.git
