@@ -47,6 +47,10 @@ jobs:
           name: generate
           command: yarn run generate
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
+      - run:
+          name: update index
+          command: ./blog-maintenance algolia
+          working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
       - save_cache:
           key: build-cache-vendor-{{ .Branch }}--{{ .Revision }}
           paths:
@@ -65,9 +69,6 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run:
-          name: update index
-          command: ./blog-maintenance algolia
       - run:
           name: clone
           command: git clone --depth 1 https://${GITHUB_TOKEN}@github.com/ta2mo/ta2mo.github.io.git
