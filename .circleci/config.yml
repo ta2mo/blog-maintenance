@@ -50,7 +50,7 @@ jobs:
       - run:
           name: update index
           command: ./blog-maintenance algolia
-          working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
+          working_directory: go/src/github.com/ta2mo/blog-maintenance
       - save_cache:
           key: build-cache-vendor-{{ .Branch }}--{{ .Revision }}
           paths:
