@@ -25,5 +25,7 @@ func GenerateAlgoliaRecord(context *cli.Context) error {
 		return err
 	}
 
+	log.Print("[INFO]Success save object")
+
 	return nil
 }
