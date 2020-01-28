@@ -25,6 +25,9 @@ module.exports = {
 */
 export default {
   buildModules: ['@nuxt/typescript-build'],
+  build: {
+    transpile: ['vue-instantsearch', 'instantsearch.js/es']
+  },
   /*
   ** Headers of the page
   */
