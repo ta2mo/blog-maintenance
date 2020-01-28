@@ -5,6 +5,14 @@
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
+        <no-ssr>
+          <ais-powered-by />
+        </no-ssr>
+        <div v-if="searchResult.nbHits == 0">
+          <div class="dropdown-item content is-small">
+            <p>not found</p>
+          </div>
+        </div>
         <div v-for="(item, i) in searchResult.hits">
           <nuxt-link :to="'/post/' + item.objectID" @click.native="clear">
             <div class="dropdown-item content is-small">
@@ -26,16 +34,22 @@ import {
   Emit,
   Vue,
 } from 'nuxt-property-decorator'
-import index from '~/plugins/algolia_index'
+import index from '~/plugins/algolia'
+import { AisPoweredBy } from 'vue-instantsearch'
+import 'instantsearch.css/themes/algolia-min.css'
 
-@Component
+@Component({
+  components: {
+    AisPoweredBy
+  }
+})
 export default class extends Vue {
   words: string = ''
   searchResult: any = {}
   active = false
 
   search() {
-    if(this.words.length < 2) {
+    if(this.words.length == 0) {
       this.setResult({})
       this.setActive(false)
       return
@@ -45,8 +59,7 @@ export default class extends Vue {
       highlightPreTag: '<em class="highlight">',
       attributesToHighlight: ['content:100'],
     }).then(result => {
-
-      this.setActive(result && result.hits.length > 0)
+      this.setActive(true)
       this.setResult(result)
     })
   }
