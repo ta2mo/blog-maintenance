@@ -4,6 +4,7 @@ title: 現場エンジニアからみたSESの問題点
 date: 2020-01-07 19:00:00 +0900
 comments: true
 categories: Tech
+tags: work, career
 ---
 
 <!-- write here ↓ -->

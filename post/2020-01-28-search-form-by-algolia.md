@@ -4,6 +4,7 @@ title: algoliaをつかってNuxt.jsのサイトに検索フォームをつけ�
 date: 2020-01-28 19:00:00 +0900
 comments: true
 categories: Tech
+tags: Nuxt.js, Golang
 ---
 
 <!-- write here ↓ -->

@@ -3,7 +3,8 @@ layout: post
 title: Macの移行アシスタントつかったらgo buildできなくなった
 date: 2018-11-22 00:00:00 +0900
 comments: true
-categories: Tech, Mac
+categories: Tech
+tags: Mac, Tips
 ---
 
 <!-- write here ↓ -->

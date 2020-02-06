@@ -4,13 +4,14 @@ title: Gitpodは意外と使えそう
 date: 2019-02-17 04:00:00 +0900
 comments: true
 categories: Tech
+tags: impression
 ---
 
 <!-- write here ↓ -->
 [Gitpod](https://www.gitpod.io/)というサービスをなにかの記事で見つけて使ってみました。ブラウザ上でterminalを内蔵したIDEが起動し、TypeFox社が提供するdockerコンテナに接続されその上で開発ができるサービスです。
 
 前にiPad Proでコードを書いたりできないかいくつか検討していたのですが、iPadのアプリではgit連携はできてもエディタで書ける程度であり、コードを書いて開発するとまではいえない状況でした。
-業務ではJetBrains社のIDEを使うことがほとんどで、iPadでもエディターよりIDEが使えないものかと探している中でなかなか使用感が良さそうなサービスだったので試しに導入してみました。
+業務ではJetBrains社のIDEを使うことがほとんどで、iPadでもエディターではなくIDEが使えないものかと探している中でなかなか使用感が良さそうなサービスだったので試しに導入してみました。
 
 基本的にはPCで検証してみましたがiPad Pro 10.5inchでChromeを使えばGitpodを利用することができました。Safariは非対応でした。
 

@@ -4,7 +4,7 @@ title: IntelliJで作業中のファイルをGithubで開く方法
 date: 2020-02-06 19:00:00 +0900
 comments: true
 categories: Tech
-tags: Editor IntelliJ Mac Tips
+tags: Editor, IntelliJ, Mac, Tips
 ---
 
 <!-- write here ↓ -->

@@ -4,6 +4,7 @@ title: Github PagesにNuxt.jsでつくった静的ファイルをアップロー
 date: 2019-02-07 19:00:00 +0900
 comments: true
 categories: Tech
+tags: "Google Analytics"
 ---
 
 <!-- write here ↓ -->

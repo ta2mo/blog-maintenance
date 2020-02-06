@@ -4,6 +4,7 @@ title: REALFORCEはいいぞ
 date: 2019-07-01 19:00:00 +0900
 comments: true
 categories: GADGET
+tags: keyboard
 ---
 
 <!-- write here ↓ -->
