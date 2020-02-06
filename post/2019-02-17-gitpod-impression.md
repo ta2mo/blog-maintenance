@@ -14,7 +14,7 @@ categories: Tech
 
 基本的にはPCで検証してみましたがiPad Pro 10.5inchでChromeを使えばGitpodを利用することができました。Safariは非対応でした。
 
-![iPadでのイメージ](~/assets/2019-02-17/gitpod-in-ipad.jpg)
+![iPadでのイメージ](~/assets/image/2019-02-17/gitpod-in-ipad.jpg)
 
 iPadで起動してみた様子
 
