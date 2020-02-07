@@ -15,15 +15,15 @@ func main() {
 
 	app.Action = func(context *cli.Context) error {
 		switch context.Args().Get(0) {
-		case "generate", "gen":
-			if err := command.Generate(context); err != nil {
+		case "convert", "c":
+			if err := command.Convert(context); err != nil {
 				return err
 			}
 		case "new", "n":
-			if err := command.NewPost(context); err != nil {
+			if err := command.New(context); err != nil {
 				return err
 			}
-		case "algolia", "a":
+		case "index", "i":
 			if err := command.GenerateAlgoliaRecord(context); err != nil {
 				return err
 			}

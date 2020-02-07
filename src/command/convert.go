@@ -37,7 +37,8 @@ const (
 
 var reg = regexp.MustCompile(separatorLine)
 
-func Generate(context *cli.Context) error {
+// Convert convert from markdown files to vue page conponents.
+func Convert(context *cli.Context) error {
 	posts, err := MappingFromFiles(postDir)
 	if err != nil {
 		return nil
@@ -81,6 +82,7 @@ func Generate(context *cli.Context) error {
 	return nil
 }
 
+// MappingFromFiles mapping post file to object.
 func MappingFromFiles(targetDir string) ([]model.Post, error) {
 	fileNames, err := ls(targetDir)
 	if err != nil {

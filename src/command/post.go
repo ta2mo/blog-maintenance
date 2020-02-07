@@ -15,7 +15,7 @@ const (
 	PostDir         = "post/"
 )
 
-func NewPost(context *cli.Context) error {
+func New(_ *cli.Context) error {
 	now := time.Now()
 	var title string
 

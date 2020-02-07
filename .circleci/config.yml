@@ -18,8 +18,8 @@ jobs:
           name: build
           command: go build
       - run:
-          name: generate
-          command: ./blog-maintenance generate
+          name: convert
+          command: ./blog-maintenance convert
       - save_cache:
           key: build-cache-{{ .Branch }}--{{ .Revision }}
           paths:
@@ -49,7 +49,7 @@ jobs:
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
       - run:
           name: update index
-          command: ./blog-maintenance algolia
+          command: ./blog-maintenance index
           working_directory: go/src/github.com/ta2mo/blog-maintenance
       - save_cache:
           key: build-cache-vendor-{{ .Branch }}--{{ .Revision }}

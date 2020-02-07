@@ -10,7 +10,8 @@ import (
 const apiID = "ZJ3LUJOSKF"
 const indexName = "ta2mo.github.io"
 
-func GenerateAlgoliaRecord(context *cli.Context) error {
+// GenerateAlgoliaRecord
+func GenerateAlgoliaRecord(_ *cli.Context) error {
 	posts, err := MappingFromFiles(postDir)
 	if err != nil {
 		return err
