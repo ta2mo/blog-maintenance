@@ -1,4 +1,4 @@
-package command
+package option
 
 import (
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
