@@ -1,11 +1,11 @@
-package command
+package option
 
 import (
 	"bufio"
 	"github.com/microcosm-cc/bluemonday"
 	_ "github.com/russross/blackfriday"
 	"github.com/shurcooL/github_flavored_markdown"
-	"github.com/ta2mo/blog-maintenance/src/model"
+	"github.com/ta2mo/blog-maintenance/internal/model"
 	"github.com/urfave/cli"
 	"io/ioutil"
 	"os"
@@ -21,7 +21,7 @@ import (
 const (
 	vueExt           = ".vue"
 	postDir          = "./post"
-	templateDir      = "./src/template/"
+	templateDir      = "./internal/template/"
 	nuxtPageDir      = "./nuxt-template/pages/post/"
 	nuxtComponentDir = "./nuxt-template/components/"
 

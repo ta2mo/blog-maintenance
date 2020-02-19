@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ta2mo/blog-maintenance/src/command"
+	"github.com/ta2mo/blog-maintenance/internal/option"
 	"github.com/urfave/cli"
 	"os"
 )
@@ -16,15 +16,15 @@ func main() {
 	app.Action = func(context *cli.Context) error {
 		switch context.Args().Get(0) {
 		case "convert", "c":
-			if err := command.Convert(context); err != nil {
+			if err := option.Convert(context); err != nil {
 				return err
 			}
 		case "new", "n":
-			if err := command.New(context); err != nil {
+			if err := option.New(context); err != nil {
 				return err
 			}
 		case "index", "i":
-			if err := command.GenerateAlgoliaRecord(context); err != nil {
+			if err := option.GenerateAlgoliaRecord(context); err != nil {
 				return err
 			}
 		default:
