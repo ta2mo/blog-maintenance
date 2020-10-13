@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-const apiID = "ZJ3LUJOSKF"
+const apiID = "WT16MPP7YO"
 const indexName = "ta2mo.github.io"
 
 // GenerateAlgoliaRecord
