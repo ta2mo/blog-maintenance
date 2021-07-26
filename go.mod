@@ -5,7 +5,7 @@ go 1.13
 require (
 	github.com/algolia/algoliasearch-client-go/v3 v3.5.0
 	github.com/kr/pretty v0.2.0 // indirect
-	github.com/microcosm-cc/bluemonday v1.0.1
+	github.com/microcosm-cc/bluemonday v1.0.5
 	github.com/russross/blackfriday v1.5.2
 	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/shurcooL/github_flavored_markdown v0.0.0-20181002035957-2122de532470
@@ -18,5 +18,4 @@ require (
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d // indirect
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e // indirect
 	github.com/urfave/cli v1.20.0
-	golang.org/x/net v0.0.0-20181023162649-9b4f9f5ad519 // indirect
 )
