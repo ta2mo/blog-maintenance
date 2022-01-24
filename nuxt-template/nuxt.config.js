@@ -1,4 +1,5 @@
 import parseArgs from 'minimist';
+// import {murmurHash} from 'murmurhash-native';
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -24,9 +25,18 @@ const host =
 module.exports = {
 */
 export default {
+  // target: "static",
   buildModules: ['@nuxt/typescript-build'],
   build: {
-    transpile: ['vue-instantsearch', 'instantsearch.js/es']
+    transpile: ['vue-instantsearch', 'instantsearch.js/es'],
+    // loaders: {
+    //   sass: {
+    //     implementation: require('sass')
+    //   },
+    //   scss: {
+    //     implementation: require('sass')
+    //   }
+    // }
   },
   /*
   ** Headers of the page
