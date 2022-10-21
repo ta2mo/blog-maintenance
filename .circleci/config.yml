@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /go/src/github.com/ta2mo/blog-maintenance
     docker:
-      - image: circleci/golang:1.19
+      - image: cimg/go:1.19
     environment:
       - GOCACHE: "/tmp/go/cache"
       - GO111MODULE: "on"
@@ -35,7 +35,7 @@ jobs:
             - go/src/github.com/ta2mo/blog-maintenance
   generate:
     docker:
-      - image: circleci/node:18
+      - image: cimg/node:18.11
     steps:
       - attach_workspace:
           at: .
@@ -65,7 +65,7 @@ jobs:
           path: nuxt-template
   deploy:
     docker:
-      - image: circleci/golang:1.19
+      - image: cimg/go:1.19
     steps:
       - attach_workspace:
           at: .
