@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /go/src/github.com/ta2mo/blog-maintenance
     docker:
-      - image: circleci/golang:1.13
+      - image: circleci/golang:1.19
     environment:
       - GOCACHE: "/tmp/go/cache"
       - GO111MODULE: "on"
@@ -35,7 +35,7 @@ jobs:
             - go/src/github.com/ta2mo/blog-maintenance
   generate:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:18
     steps:
       - attach_workspace:
           at: .
@@ -45,7 +45,7 @@ jobs:
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
       - run:
           name: generate
-          command: yarn run generate
+          command: NODE_OPTIONS=--openssl-legacy-provider yarn run generate
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
       - run:
           name: update index
@@ -65,7 +65,7 @@ jobs:
           path: nuxt-template
   deploy:
     docker:
-      - image: circleci/golang:1.13
+      - image: circleci/golang:1.19
     steps:
       - attach_workspace:
           at: .
