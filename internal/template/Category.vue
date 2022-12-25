@@ -47,11 +47,9 @@ import {
   Component,
   Vue
 } from 'nuxt-property-decorator'
-import Search  from '~/components/sidebar/Search.vue'
 
 @Component({
   components: {
-    Search
   }
 })
 

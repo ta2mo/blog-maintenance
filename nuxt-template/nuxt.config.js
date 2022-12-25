@@ -1,4 +1,5 @@
 import parseArgs from 'minimist';
+import { defineNuxtConfig } from '@nuxt/bridge';
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -23,8 +24,9 @@ const host =
 /*
 module.exports = {
 */
-export default {
-  buildModules: ['@nuxt/typescript-build'],
+export default defineNuxtConfig({
+  ssr: false,
+  target: 'static',
   build: {
     transpile: ['vue-instantsearch', 'instantsearch.js/es']
   },
@@ -91,4 +93,4 @@ export default {
       return routes.map(route => route.url = `${route.url}/`)
     },
   }
-}
+})
