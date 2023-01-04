@@ -1,5 +1,5 @@
 import parseArgs from 'minimist';
-// import {murmurHash} from 'murmurhash-native';
+import { defineNuxtConfig } from '@nuxt/bridge';
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -24,19 +24,11 @@ const host =
 /*
 module.exports = {
 */
-export default {
-  // target: "static",
-  buildModules: ['@nuxt/typescript-build'],
+export default defineNuxtConfig({
+  ssr: false,
+  target: 'static',
   build: {
-    transpile: ['vue-instantsearch', 'instantsearch.js/es'],
-    // loaders: {
-    //   sass: {
-    //     implementation: require('sass')
-    //   },
-    //   scss: {
-    //     implementation: require('sass')
-    //   }
-    // }
+    transpile: ['vue-instantsearch', 'instantsearch.js/es']
   },
   /*
   ** Headers of the page
@@ -101,4 +93,4 @@ export default {
       return routes.map(route => route.url = `${route.url}/`)
     },
   }
-}
+})

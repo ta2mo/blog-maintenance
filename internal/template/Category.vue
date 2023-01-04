@@ -42,6 +42,11 @@ import {
   Vue
 } from 'nuxt-property-decorator'
 
+@Component({
+  components: {
+  }
+})
+
 export default class extends Vue {
 }
 </script>

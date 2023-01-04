@@ -80,6 +80,7 @@ vendor/
 
 # generated files
 blog-maintenance
+/nuxt-template/.output
 /nuxt-template/static/sitemap.xml
 /nuxt-template/pages/post/*.vue
 /nuxt-template/components/PostList.vue
