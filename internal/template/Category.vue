@@ -1,12 +1,6 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <p class="menu-label">Search</p>
-      <ul class="menu-list">
-        <li>
-          <Search/>
-        </li>
-      </ul>
       <p class="menu-label">Category</p>
       <ul class="menu-list">
         {{ range $key, $value := . }}

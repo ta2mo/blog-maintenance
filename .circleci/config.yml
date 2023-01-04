@@ -35,7 +35,7 @@ jobs:
             - go/src/github.com/ta2mo/blog-maintenance
   generate:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: circleci/node:14
     steps:
       - attach_workspace:
           at: .
