@@ -14,8 +14,8 @@ $ go build
 ```
 $ ./blog-maintenance convert
 $ cd nuxt-template
-$ yarn install
-$ yarn run dev
+$ npm install
+$ npm run dev
 
 # open browser http://localhost:13000/
 ```

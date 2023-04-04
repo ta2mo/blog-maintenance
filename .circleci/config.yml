@@ -40,12 +40,12 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: yarn
-          command: yarn install
+          name: dependencies
+          command: npm install
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
       - run:
           name: generate
-          command: yarn run generate
+          command: npm run generate
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
       - save_cache:
           key: build-cache-vendor-{{ .Branch }}--{{ .Revision }}
