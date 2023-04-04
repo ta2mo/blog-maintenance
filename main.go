@@ -23,10 +23,6 @@ func main() {
 			if err := option.New(context); err != nil {
 				return err
 			}
-		case "index", "i":
-			if err := option.GenerateAlgoliaRecord(context); err != nil {
-				return err
-			}
 		default:
 			cli.ShowAppHelp(context)
 		}

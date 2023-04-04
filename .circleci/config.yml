@@ -35,7 +35,7 @@ jobs:
             - go/src/github.com/ta2mo/blog-maintenance
   generate:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: circleci/node:14
     steps:
       - attach_workspace:
           at: .
@@ -47,10 +47,6 @@ jobs:
           name: generate
           command: npm run generate
           working_directory: go/src/github.com/ta2mo/blog-maintenance/nuxt-template
-      - run:
-          name: update index
-          command: ./blog-maintenance index
-          working_directory: go/src/github.com/ta2mo/blog-maintenance
       - save_cache:
           key: build-cache-vendor-{{ .Branch }}--{{ .Revision }}
           paths:
@@ -60,7 +56,7 @@ jobs:
           root: go/src/github.com/ta2mo/blog-maintenance
           paths:
             - blog-maintenance
-            - nuxt-template/dist/*
+            - nuxt-template/.output/putblic/*
       - store_artifacts:
           path: nuxt-template
   deploy:
@@ -74,7 +70,7 @@ jobs:
           command: git clone --depth 1 https://${GITHUB_TOKEN}@github.com/ta2mo/ta2mo.github.io.git
       - run:
           name: copy
-          command: cp -R nuxt-template/dist/* ta2mo.github.io/
+          command: cp -R nuxt-template/.output/public/* ta2mo.github.io/
       - run:
           name: deploy
           command: |
