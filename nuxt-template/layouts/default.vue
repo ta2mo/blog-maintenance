@@ -3,9 +3,9 @@
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <nuxt-link to="/">
+          <router-link to="/">
             <h1 class="title">blog ta2mo</h1>
-          </nuxt-link>
+          </router-link>
         </div>
       </div>
     </section>
@@ -13,7 +13,7 @@
       <div class="container">
         <div class="columns">
           <div class="column is-9">
-            <nuxt/>
+            <slot/>
           </div>
           <div class="column is-3">
             <Menu/>
@@ -33,12 +33,6 @@
 
 <script>
 import Menu from '~/components/Menu.vue'
-
-export default {
-  components: {
-    Menu
-  }
-}
 </script>
 
 <style scoped>

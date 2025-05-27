@@ -1,5 +1,5 @@
 import parseArgs from 'minimist';
-import { defineNuxtConfig } from '@nuxt/bridge';
+import { defineNuxtConfig } from 'nuxt/config';
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -30,23 +30,22 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vue-instantsearch', 'instantsearch.js/es']
   },
-  /*
-  ** Headers of the page
-  */
-  head: {
-    htmlAttrs: {
-      lang: 'ja',
-    },
-    title: 'blog ta2mo',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'ta2moがソフトウェアやハードウェアに触れ、思ったことをまとめたブログです。 blogged by ta2mo' },
-      { name: 'google-site-verification', content:'phkCSJT4fL-KjD1tKs9WEBMJIazwJL8cJYGY7FRGVE0' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'ja',
+      },
+      title: 'blog ta2mo',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'ta2moがソフトウェアやハードウェアに触れ、思ったことをまとめたブログです。 blogged by ta2mo' },
+        { name: 'google-site-verification', content:'phkCSJT4fL-KjD1tKs9WEBMJIazwJL8cJYGY7FRGVE0' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
   },
   /*
   ** Customize the progress bar color
@@ -72,17 +71,19 @@ export default defineNuxtConfig({
       }
     }
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "~/assets/main.scss";'
+        }
+      }
+    }
+  },
   css: [
-    'bulma',
-    { src: '~assets/main.scss', lang: 'scss' }
+    'bulma'
   ],
   modules: [
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-48150028-1'
-    }],
-    ['@nuxtjs/google-adsense', {
-      id: 'ca-pub-8721350119362424'
-    }],
     '@nuxtjs/sitemap'
   ],
   sitemap: {

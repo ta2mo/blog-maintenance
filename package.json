@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@nuxtjs/google-gtag": "^1.0.4"
+  }
+}

@@ -8,10 +8,10 @@
         <li>{{ $key }}</li>
         <ul>
           {{ range $value }}<li>
-            <nuxt-link to="/post/{{ .FileName }}">
+            <router-link to="/post/{{ .FileName }}">
               <span class="label is-small">{{ .Header.Date.Format "2006-01-02" }}</span>
               {{ .Header.Title }}
-            </nuxt-link>
+            </router-link>
           </li>
           {{ end }}
         </ul>
@@ -22,10 +22,10 @@
         <li>{{ $key }}</li>
         <ul>
           {{ range $value }}<li>
-            <nuxt-link to="/post/{{ .FileName }}">
+            <router-link to="/post/{{ .FileName }}">
               <span class="label is-small">{{ .Header.Date.Format "2006-01-02" }}</span>
               {{ .Header.Title }}
-            </nuxt-link>
+            </router-link>
           </li>
           {{ end }}
         </ul>
@@ -37,18 +37,6 @@
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Vue
-} from 'nuxt-property-decorator'
-
-@Component({
-  components: {
-  }
-})
-
-export default class extends Vue {
-}
 </script>
 
 <style scoped>
