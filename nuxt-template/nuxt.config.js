@@ -75,13 +75,12 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "~/assets/main.scss";'
         }
       }
     }
   },
   css: [
-    'bulma'
+    'assets/main.scss'
   ],
   modules: [
     '@nuxtjs/sitemap'
