@@ -19,16 +19,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import {
-  Component,
-  Vue
-} from 'nuxt-property-decorator'
-
-@Component
-export default class extends Vue {
-}
+<script setup lang="ts">
 </script>
 
 <style scoped>
+  div.card {
+    border-radius: 0;
+  }
+
+  ins {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 </style>

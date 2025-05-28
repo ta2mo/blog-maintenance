@@ -14,20 +14,20 @@
       <div class="level-left is-left">
         <div class="level-item">
           {{ if .newerPost }}
-          <nuxt-link class="is-right is-pulled-left" to="/post/{{ .newerPost.FileName }}">
+          <router-link class="is-right is-pulled-left" to="/post/{{ .newerPost.FileName }}">
             <p class="heading">←Newer</p>
             <span>{{ .newerPost.Header.Title }}</span>
-          </nuxt-link>
+          </router-link>
           {{ end }}
         </div>
       </div>
       <div class="level-right is-right">
         <div class="level-item">
           {{ if .olderPost }}
-          <nuxt-link class="is-left" to="/post/{{ .olderPost.FileName }}">
+          <router-link class="is-left" to="/post/{{ .olderPost.FileName }}">
             <p class="heading">Older→</p>
             <span>{{ .olderPost.Header.Title }}</span>
-          </nuxt-link>
+          </router-link>
           {{ end }}
         </div>
       </div>
@@ -36,20 +36,6 @@
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Vue
-} from "nuxt-property-decorator"
-import Menu from '~/components/Menu.vue'
-
-@Component({
-    components: {
-        Menu
-    }
-})
-
-export default class extends Vue {
-}
 </script>
 
 <style scoped>

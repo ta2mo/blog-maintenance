@@ -3,9 +3,9 @@
     {{ range . }}
     <div class="box">
       <span class="lable is-medium">{{ .Header.Date.Format "2006-01-02" }}</span>
-      <nuxt-link to="/post/{{ .FileName }}">
+      <router-link to="/post/{{ .FileName }}">
         <h1 id="{{ .FileName }}" class="title">{{ .Header.Title }}</h1>
-      </nuxt-link>
+      </router-link>
       <div class="content">
           {{ .Content }}
       </div>
@@ -16,20 +16,7 @@
 </template>
 
 <script lang="ts">
-import {
- Component,
- Vue
-} from "nuxt-property-decorator"
 import PostList from '~/components/PostList.vue'
-
-@Component({
-  components: {
-    PostList
-  }
-})
-
-export default class extends Vue {
-}
 </script>
 
 <style scoped>
