@@ -20,8 +20,15 @@
 </template>
 
 <script setup lang="ts">
-// 特にロジックは不要
 </script>
 
 <style scoped>
+  div.card {
+    border-radius: 0;
+  }
+
+  ins {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 </style>

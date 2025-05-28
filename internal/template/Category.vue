@@ -43,4 +43,9 @@
   .nuxt-link-active {
     background: hsl(0, 0%, 96%);
   }
+  div.card {
+    border-radius: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 </style>
