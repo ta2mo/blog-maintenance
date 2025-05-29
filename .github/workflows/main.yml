@@ -1,0 +1,80 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.24'
+          
+      - name: Build
+        run: go build
+        
+      - name: Convert
+        run: ./blog-maintenance convert
+        
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+  generate:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          
+      - name: Install dependencies
+        working-directory: nuxt-template
+        run: npm install
+        
+      - name: Generate
+        working-directory: nuxt-template
+        run: npm run generate
+        
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: nuxt-template/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('nuxt-template/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+  deploy:
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Clone target repository
+        run: git clone --depth 1 https://${{ secrets.GITHUB_TOKEN }}@github.com/ta2mo/ta2mo.github.io.git
+        
+      - name: Copy generated files
+        run: cp -R nuxt-template/.output/public/* ta2mo.github.io/
+        
+      - name: Deploy to GitHub Pages
+        working-directory: ta2mo.github.io
+        run: |
+          git config credential.helper 'cache --timeout=120'
+          git config user.email ${{ secrets.EMAIL }}
+          git config user.name ta2mo
+          git add --all
+          git commit -m "update via github actions"
+          git pull -q https://${{ secrets.GITHUB_TOKEN }}@github.com/ta2mo/ta2mo.github.io.git HEAD
+          git push -q https://${{ secrets.GITHUB_TOKEN }}@github.com/ta2mo/ta2mo.github.io.git HEAD 
