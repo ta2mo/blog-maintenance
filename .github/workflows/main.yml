@@ -42,7 +42,9 @@ jobs:
           
       - name: Install dependencies
         working-directory: nuxt-template
-        run: npm install
+        run: |
+          npm install
+          npm install postcss-custom-properties --save-dev
         
       - name: Generate
         working-directory: nuxt-template
@@ -66,7 +68,9 @@ jobs:
         run: git clone --depth 1 https://${{ secrets.ACCESS_TOKEN }}@github.com/ta2mo/ta2mo.github.io.git
         
       - name: Copy generated files
-        run: cp -R nuxt-template/.output/public/* ta2mo.github.io/
+        run: |
+          cp -R nuxt-template/.output/public/* ta2mo.github.io/
+          cp -R nuxt-template/components ta2mo.github.io/
         
       - name: Deploy to GitHub Pages
         working-directory: ta2mo.github.io
