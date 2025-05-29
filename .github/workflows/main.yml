@@ -70,7 +70,7 @@ jobs:
       - name: Copy generated files
         run: |
           cp -R nuxt-template/.output/public/* ta2mo.github.io/
-          cp -R nuxt-template/components ta2mo.github.io/
+          cp -R nuxt-template/**/* ta2mo.github.io/
         
       - name: Deploy to GitHub Pages
         working-directory: ta2mo.github.io
