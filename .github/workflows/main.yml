@@ -2,7 +2,11 @@ name: CI/CD
 
 on:
   push:
-    branches: [ '*' ]
+    branches: [ master ]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   build:
@@ -29,11 +33,24 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
+      - name: Upload nuxt-template as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuxt-template
+          path: nuxt-template
+          retention-days: 1
+
   generate:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Download nuxt-template artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuxt-template
+          path: nuxt-template
       
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -48,7 +65,8 @@ jobs:
         
       - name: Generate
         working-directory: nuxt-template
-        run: npm run generate
+        run: |
+          npm run generate
         
       - name: Cache node modules
         uses: actions/cache@v3
@@ -58,25 +76,36 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Upload generated files as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-files
+          path: nuxt-template/.output/public
+          retention-days: 1
+
   deploy:
     needs: generate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       
+      - name: Download generated files
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-files
+          path: generated-files
+      
       - name: Clone target repository
         run: git clone --depth 1 https://${{ secrets.ACCESS_TOKEN }}@github.com/ta2mo/ta2mo.github.io.git
         
       - name: Copy generated files
         run: |
-          cp -R nuxt-template/.output/public/* ta2mo.github.io/
-          cp -R nuxt-template/**/* ta2mo.github.io/
+          cp -R generated-files/* ta2mo.github.io/
         
       - name: Deploy to GitHub Pages
         working-directory: ta2mo.github.io
         run: |
-          git config credential.helper 'cache --timeout=120'
-          git config user.email ${{ secrets.EMAIL }}
+          git config user.email naoto.tanimoto@gmail.com
           git config user.name ta2mo
           git add --all
           git commit -m "update via github actions"
