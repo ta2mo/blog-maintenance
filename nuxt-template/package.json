@@ -22,7 +22,7 @@
     "@nuxtjs/sitemap": "^7.3.0",
     "bulma": "^1.0.4",
     "minimist": "^1.2.8",
-    "nuxt": "^3.17.4",
+    "nuxt": "^3.19.0",
     "typescript": "^5.2.0",
     "vue": "^3.3.0"
   },
