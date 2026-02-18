@@ -1,9 +1,9 @@
 <template>
   <aside class="menu">
     <ul>
-      <li><Profile/></li>
-      <li><RecentPost/></li>
-      <li><Category/></li>
+      <li><Profile /></li>
+      <li><RecentPost /></li>
+      <li><Category /></li>
     </ul>
   </aside>
 </template>

@@ -4,7 +4,9 @@
       <div class="hero-body">
         <div class="container">
           <router-link to="/">
-            <h1 class="title">blog ta2mo</h1>
+            <h1 class="title">
+              blog ta2mo
+            </h1>
           </router-link>
         </div>
       </div>
@@ -13,10 +15,10 @@
       <div class="container">
         <div class="columns">
           <div class="column is-9">
-            <slot/>
+            <slot />
           </div>
           <div class="column is-3">
-            <Menu/>
+            <Menu />
           </div>
         </div>
       </div>
@@ -31,8 +33,7 @@
   </div>
 </template>
 
-<script>
-import Menu from '~/components/Menu.vue'
+<script setup lang="ts">
 </script>
 
 <style scoped>
@@ -43,4 +44,3 @@ import Menu from '~/components/Menu.vue'
   opacity: 0;
 }
 </style>
-
