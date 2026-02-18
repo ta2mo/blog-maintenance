@@ -1,25 +1,4 @@
-import parseArgs from 'minimist';
-import { defineNuxtConfig } from 'nuxt/config';
-
-const argv = parseArgs(process.argv.slice(2), {
-  alias: {
-    H: 'hostname',
-    p: 'port'
-  },
-  string: ['H'],
-  unknown: parameter => false
-})
-
-const port =
-  argv.port ||
-  process.env.PORT ||
-  process.env.npm_package_config_nuxt_port ||
-  '13000'
-const host =
-  argv.hostname ||
-  process.env.HOST ||
-  process.env.npm_package_config_nuxt_host ||
-  'localhost'
+import { defineNuxtConfig } from 'nuxt/config'
 
 /*
 module.exports = {
@@ -33,14 +12,14 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: 'ja',
+        lang: 'ja'
       },
       title: 'blog ta2mo',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: 'ta2moがソフトウェアやハードウェアに触れ、思ったことをまとめたブログです。 blogged by ta2mo' },
-        { name: 'google-site-verification', content:'phkCSJT4fL-KjD1tKs9WEBMJIazwJL8cJYGY7FRGVE0' }
+        { name: 'google-site-verification', content: 'phkCSJT4fL-KjD1tKs9WEBMJIazwJL8cJYGY7FRGVE0' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -89,8 +68,11 @@ export default defineNuxtConfig({
     path: '/sitemap.xml',
     hostname: 'https://ta2mo.github.io',
     generate: true,
-    filter ({ routes }) {
-      return routes.map(route => route.url = `${route.url}/`)
-    },
+    filter({ routes }) {
+      return routes.map((route) => {
+        route.url = `${route.url}/`
+        return route
+      })
+    }
   }
 })

@@ -2,14 +2,18 @@
   <div class="card">
     <div class="card-content">
       <div class="media-content">
-        <p class="menu-label">Profile</p>
-        <p class="subtitle"><a href="https://github.com/ta2mo" target="_blank">@ta2mo</a></p>
+        <p class="menu-label">
+          Profile
+        </p>
+        <p class="subtitle">
+          <a href="https://github.com/ta2mo" target="_blank">@ta2mo</a>
+        </p>
       </div>
       <div class="content">
         <p>GitHub: <a href="https://github.com/ta2mo" target="_blank">https://github.com/ta2mo</a></p>
         <p>
-        software engineer.<br>
-        Go, Java, JavaScript, Scala
+          software engineer.<br>
+          Go, Java, JavaScript, Scala
         </p>
       </div>
       <div class="content">

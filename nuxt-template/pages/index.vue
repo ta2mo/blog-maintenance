@@ -1,5 +1,5 @@
 <template>
-  <PostList/>
+  <PostList />
 </template>
 
 <script lang="ts">
@@ -7,4 +7,3 @@
 
 <style scoped>
 </style>
-
