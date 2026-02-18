@@ -1,0 +1,12 @@
+Package             Current    Wanted  Latest  Location                        Depended by
+@nuxt/devtools        2.4.1     3.2.1   3.2.1  node_modules/@nuxt/devtools     nuxt-template
+@nuxtjs/sitemap       7.3.0     7.6.0   7.6.0  node_modules/@nuxtjs/sitemap    nuxt-template
+@types/node        20.17.50  20.19.33  25.2.3  node_modules/@types/node        nuxt-template
+@vue/compiler-sfc    3.5.15    3.5.28  3.5.28  node_modules/@vue/compiler-sfc  nuxt-template
+eslint               8.57.1    8.57.1  9.39.2  node_modules/eslint             nuxt-template
+eslint-plugin-vue    9.33.0    9.33.0  10.7.0  node_modules/eslint-plugin-vue  nuxt-template
+nuxt                 3.17.4    3.21.1   4.3.1  node_modules/nuxt               nuxt-template
+sass                 1.89.0    1.97.3  1.97.3  node_modules/sass               nuxt-template
+sass-loader          16.0.5    16.0.7  16.0.7  node_modules/sass-loader        nuxt-template
+typescript            5.8.3     5.9.3   5.9.3  node_modules/typescript         nuxt-template
+vue                  3.5.15    3.5.28  3.5.28  node_modules/vue                nuxt-template
