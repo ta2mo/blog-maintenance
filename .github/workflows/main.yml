@@ -100,7 +100,11 @@ jobs:
         
       - name: Copy generated files
         run: |
-          cp -R generated-files/* ta2mo.github.io/
+          mkdir -p ta2mo.github.io/_nuxt ta2mo.github.io/post ta2mo.github.io/__sitemap__
+          rsync -a --delete generated-files/_nuxt/ ta2mo.github.io/_nuxt/
+          rsync -a --delete generated-files/post/ ta2mo.github.io/post/
+          rsync -a --delete generated-files/__sitemap__/ ta2mo.github.io/__sitemap__/
+          find generated-files -mindepth 1 -maxdepth 1 -type f -exec cp -f {} ta2mo.github.io/ \;
         
       - name: Deploy to GitHub Pages
         working-directory: ta2mo.github.io
