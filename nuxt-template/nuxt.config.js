@@ -1,11 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
-/*
-module.exports = {
-*/
 export default defineNuxtConfig({
   ssr: false,
-  target: 'static',
   build: {
     transpile: ['vue-instantsearch', 'instantsearch.js/es']
   },
@@ -24,23 +20,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
-    }
-  },
-  /*
-  ** Customize the progress bar color
-  */
-  loading: { color: '#3B8070' },
-  /*
-  ** Run ESLint on save
-  */
-  extend(config, { isDev }) {
-    if (isDev && process.Client) {
-      config.module.rules.push({
-        enforce: 'pre',
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        exclude: /(node_modules)/
-      })
     }
   },
   postcss: {
@@ -68,7 +47,7 @@ export default defineNuxtConfig({
     path: '/sitemap.xml',
     hostname: 'https://ta2mo.github.io',
     generate: true,
-    filter({ routes }) {
+    filter ({ routes }) {
       return routes.map((route) => {
         route.url = `${route.url}/`
         return route

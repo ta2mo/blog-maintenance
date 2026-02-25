@@ -1,6 +1,11 @@
 module.exports = {
   root: true,
-  ignorePatterns: ['**/*'],
+  ignorePatterns: [
+    'node_modules/',
+    '.nuxt/',
+    '.output/',
+    'dist/'
+  ],
   env: {
     browser: true,
     node: true
@@ -17,6 +22,8 @@ module.exports = {
   rules: {
     'vue/multi-word-component-names': 'off',
     indent: ['error', 2],
+    'no-multiple-empty-lines': 'warn',
+    'no-trailing-spaces': 'warn',
     'no-tabs': 0,
     quotes: ['error', 'single']
   }
