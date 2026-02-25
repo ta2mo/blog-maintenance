@@ -23,11 +23,10 @@
     "bulma": "^1.0.4",
     "minimist": "^1.2.8",
     "nuxt": "^3.21.1",
-    "typescript": "^5.9.3",
     "vue": "^3.5.28"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^2.4.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/node": "^20.0.0",
     "@vue/compiler-sfc": "^3.3.0",
