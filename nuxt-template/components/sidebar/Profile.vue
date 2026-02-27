@@ -13,7 +13,7 @@
         <p>GitHub: <a href="https://github.com/ta2mo" target="_blank">https://github.com/ta2mo</a></p>
         <p>
           software engineer.<br>
-          Go, Java, JavaScript, Scala
+          Go, Java, TypeScript, Scala
         </p>
       </div>
       <div class="content">

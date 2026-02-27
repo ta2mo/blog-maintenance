@@ -1,22 +1,52 @@
-# nuxt template
+# nuxt テンプレート
 
-> {{ description }}
+高機能なブログシステムを構築するための Nuxt.js ベースのテンプレートです。
 
-## Build Setup
+## 機能
 
-``` bash
-# install dependencies
+- Markdown ベースの記事管理
+- レスポンシブデザイン
+- SEO最適化
+
+## プロジェクト構造
+
+```
+nuxt-template/
+├── pages/
+├── post/
+├── components/
+├── assets/
+├── public/
+├── .nuxt/
+├── package.json
+├── nuxt.config.js
+├── README.md
+└── ...
+```
+
+## 依存関係
+
+- @nuxt/content: Markdown から記事を生成する
+- @nuxt/image: 画像の最適化
+- @nuxtjs/style-resources: SCSS 共通モジュール
+
+## ビルドのセットアップ
+
+```bash
+# 依存関係をインストール
 $ npm install
 
-# serve with hot reload at localhost:13000
+# 開発サーバーを起動（ホットリロード）
 $ npm run dev
 
-# build for production and launch server
+# 本番用にビルドし、サーバーを起動
 $ npm run build
 $ npm start
 
-# generate static project
+# 静的サイトを生成
 $ npm run generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+## ブログ記事の書き方
+
+ブログ記事は `post` ディレクトリに Markdown ファイルとして保存します。ビルド時にこれらのファイルが Vue コンポーネントに変換され、Nuxt アプリケーションでレンダリングされます。記事のタイトルと URL を設定する場合は、ファイル名やフォルダ構造を使用します。
