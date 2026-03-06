@@ -19,9 +19,6 @@
   h1.title {
     margin-top: 0rem;
   }
-  div.box {
-    border-radius: 0;
-  }
 
   ins {
     margin-top: 1rem;

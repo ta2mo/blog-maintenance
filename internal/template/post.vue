@@ -39,9 +39,6 @@
   h1.title {
     margin-top: 0rem;
   }
-  div.box {
-    border-radius: 0px;
-  }
 
   ins {
     margin-top: 1rem;

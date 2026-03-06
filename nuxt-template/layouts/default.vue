@@ -1,28 +1,26 @@
 <template>
-  <div>
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <NuxtLink to="/">
-            <h1 class="title">
-              blog ta2mo
-            </h1>
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-9">
+  <div class="min-h-screen">
+    <header class="hero is-primary">
+      <UContainer class="hero-body">
+        <NuxtLink to="/" class="no-underline hover:no-underline">
+          <h1 class="title">
+            blog ta2mo
+          </h1>
+        </NuxtLink>
+      </UContainer>
+    </header>
+    <main class="section">
+      <UContainer>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          <div class="lg:col-span-9">
             <slot />
           </div>
-          <div class="column is-3">
+          <aside class="lg:col-span-3">
             <Menu />
-          </div>
+          </aside>
         </div>
-      </div>
-    </section>
+      </UContainer>
+    </main>
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
