@@ -18,4 +18,5 @@ require (
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d // indirect
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e // indirect
 	github.com/urfave/cli v1.20.0
+	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
 )

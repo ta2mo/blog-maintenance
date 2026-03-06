@@ -1,10 +1,8 @@
 <template>
-  <aside class="menu">
-    <ul>
-      <li><Profile /></li>
-      <li><RecentPost /></li>
-      <li><Category /></li>
-    </ul>
+  <aside class="menu space-y-2">
+    <Profile />
+    <RecentPost />
+    <Category />
   </aside>
 </template>
 

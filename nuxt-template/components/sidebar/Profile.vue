@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <div class="card-content">
+  <UCard class="rounded-none border border-[var(--legacy-border)] shadow-none text-base">
+    <template #default>
       <div class="media-content">
         <p class="menu-label">
           Profile
@@ -19,18 +19,14 @@
       <div class="content">
         <p>comment, typo→<a href="https://github.com/ta2mo/ta2mo.github.io/issues" target="_blank">github issues</a></p>
       </div>
-    </div>
-  </div>
+    </template>
+  </UCard>
 </template>
 
 <script setup lang="ts">
 </script>
 
 <style scoped>
-  div.card {
-    border-radius: 0;
-  }
-
   ins {
     margin-top: 1rem;
     margin-bottom: 1rem;

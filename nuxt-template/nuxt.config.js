@@ -39,9 +39,10 @@ export default defineNuxtConfig({
     }
   },
   css: [
-    'assets/main.scss'
+    'assets/css/main.css'
   ],
   modules: [
+    '@nuxt/ui',
     '@nuxtjs/sitemap',
     'nuxt-gtag'
   ],

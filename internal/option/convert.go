@@ -2,11 +2,13 @@ package option
 
 import (
 	"bufio"
+	"bytes"
 	"github.com/microcosm-cc/bluemonday"
 	_ "github.com/russross/blackfriday"
 	"github.com/shurcooL/github_flavored_markdown"
 	"github.com/ta2mo/blog-maintenance/internal/model"
 	"github.com/urfave/cli"
+	"golang.org/x/net/html"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -191,6 +193,7 @@ func parseFile(file *os.File) *model.Post {
 	}
 	if len(post.Content) > 0 {
 		output := github_flavored_markdown.Markdown([]byte(post.Content))
+		output = normalizeListContinuation(output)
 		post.Content = *(*string)(unsafe.Pointer(&output))
 		p := bluemonday.StrictPolicy().Sanitize(post.Content)
 		post.RowContent = p
@@ -228,4 +231,160 @@ func parseListFormat(str string) []string {
 		slice = append(slice, elm)
 	}
 	return slice
+}
+
+// normalizeListContinuation flattens a malformed nested ordered list pattern
+// generated around fenced code blocks so "4." does not become "a.".
+func normalizeListContinuation(src []byte) []byte {
+	doc, err := html.Parse(bytes.NewReader(src))
+	if err != nil {
+		return src
+	}
+
+	updated := true
+	for updated {
+		updated = false
+		var walk func(*html.Node)
+		walk = func(n *html.Node) {
+			if n == nil || updated {
+				return
+			}
+			if isElement(n, "li") && n.Parent != nil && isElement(n.Parent, "ol") {
+				if normalizeNestedOrderedList(n) {
+					updated = true
+					return
+				}
+			}
+			for c := n.FirstChild; c != nil; c = c.NextSibling {
+				walk(c)
+				if updated {
+					return
+				}
+			}
+		}
+		walk(doc)
+	}
+
+	body := findElement(doc, "body")
+	if body == nil {
+		return src
+	}
+
+	var b bytes.Buffer
+	for c := body.FirstChild; c != nil; c = c.NextSibling {
+		if err := html.Render(&b, c); err != nil {
+			return src
+		}
+	}
+	return b.Bytes()
+}
+
+func normalizeNestedOrderedList(li *html.Node) bool {
+	nestedOl := firstDirectElement(li, "ol")
+	if nestedOl == nil {
+		return false
+	}
+	// Apply only to continuation-like malformed pattern:
+	// ... <div class="highlight">...</div><ol><li>...</li></ol><div class="highlight">...</div>
+	nextElem := nextElementSibling(nestedOl)
+	if nextElem == nil || !(isElement(nextElem, "div") && hasClass(nextElem, "highlight")) {
+		return false
+	}
+
+	nestedItems := directChildrenByTag(nestedOl, "li")
+	if len(nestedItems) != 1 {
+		return false
+	}
+
+	parentOl := li.Parent
+	newLi := &html.Node{Type: html.ElementNode, Data: "li"}
+
+	// Move nested item's children into new sibling item.
+	for c := nestedItems[0].FirstChild; c != nil; {
+		next := c.NextSibling
+		nestedItems[0].RemoveChild(c)
+		newLi.AppendChild(c)
+		c = next
+	}
+
+	// Move all nodes after nested <ol> into the new sibling item.
+	for c := nestedOl.NextSibling; c != nil; {
+		next := c.NextSibling
+		li.RemoveChild(c)
+		newLi.AppendChild(c)
+		c = next
+	}
+
+	li.RemoveChild(nestedOl)
+	insertAfter(parentOl, li, newLi)
+	return true
+}
+
+func findElement(n *html.Node, tag string) *html.Node {
+	if n == nil {
+		return nil
+	}
+	if isElement(n, tag) {
+		return n
+	}
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if found := findElement(c, tag); found != nil {
+			return found
+		}
+	}
+	return nil
+}
+
+func firstDirectElement(n *html.Node, tag string) *html.Node {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if isElement(c, tag) {
+			return c
+		}
+	}
+	return nil
+}
+
+func directChildrenByTag(n *html.Node, tag string) []*html.Node {
+	var out []*html.Node
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if isElement(c, tag) {
+			out = append(out, c)
+		}
+	}
+	return out
+}
+
+func nextElementSibling(n *html.Node) *html.Node {
+	for c := n.NextSibling; c != nil; c = c.NextSibling {
+		if c.Type == html.ElementNode {
+			return c
+		}
+	}
+	return nil
+}
+
+func insertAfter(parent, ref, newNode *html.Node) {
+	if ref.NextSibling != nil {
+		parent.InsertBefore(newNode, ref.NextSibling)
+	} else {
+		parent.AppendChild(newNode)
+	}
+}
+
+func isElement(n *html.Node, tag string) bool {
+	return n != nil && n.Type == html.ElementNode && n.Data == tag
+}
+
+func hasClass(n *html.Node, className string) bool {
+	for _, attr := range n.Attr {
+		if attr.Key == "class" {
+			classes := strings.Fields(attr.Val)
+			for _, c := range classes {
+				if c == className {
+					return true
+				}
+			}
+		}
+	}
+	return false
 }
