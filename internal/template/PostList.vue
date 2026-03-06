@@ -3,9 +3,9 @@
     {{ range . }}
     <div class="box">
       <span class="lable is-medium">{{ .Header.Date.Format "2006-01-02" }}</span>
-      <router-link to="/post/{{ .FileName }}">
+      <NuxtLink to="/post/{{ .FileName }}">
         <h1 id="{{ .FileName }}" class="title">{{ .Header.Title }}</h1>
-      </router-link>
+      </NuxtLink>
       <div class="content">
           {{ .Content }}
       </div>
@@ -14,9 +14,6 @@
     {{ end }}
   </div>
 </template>
-
-<script lang="ts">
-</script>
 
 <style scoped>
   h1.title {

@@ -5,10 +5,10 @@
       <ul class="menu-list">
         {{ range . }}
         <li>
-          <router-link to="/post/{{ .FileName }}">
+          <NuxtLink to="/post/{{ .FileName }}">
             <span class="label is-small">{{ .Header.Date.Format "2006-01-02" }}</span>
             {{ .Header.Title }}
-          </router-link>
+          </NuxtLink>
         </li>
         {{ end }}
       </ul>
@@ -28,4 +28,3 @@
     margin-bottom: 1rem;
   }
 </style>
-

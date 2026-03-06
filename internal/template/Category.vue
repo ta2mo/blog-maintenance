@@ -8,10 +8,10 @@
         <li>{{ $key }}</li>
         <ul>
           {{ range $value }}<li>
-            <router-link to="/post/{{ .FileName }}">
+            <NuxtLink to="/post/{{ .FileName }}">
               <span class="label is-small">{{ .Header.Date.Format "2006-01-02" }}</span>
               {{ .Header.Title }}
-            </router-link>
+            </NuxtLink>
           </li>
           {{ end }}
         </ul>
@@ -22,10 +22,10 @@
         <li>{{ $key }}</li>
         <ul>
           {{ range $value }}<li>
-            <router-link to="/post/{{ .FileName }}">
+            <NuxtLink to="/post/{{ .FileName }}">
               <span class="label is-small">{{ .Header.Date.Format "2006-01-02" }}</span>
               {{ .Header.Title }}
-            </router-link>
+            </NuxtLink>
           </li>
           {{ end }}
         </ul>
@@ -35,9 +35,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-</script>
 
 <style scoped>
   .nuxt-link-active {
