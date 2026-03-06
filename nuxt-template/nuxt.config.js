@@ -48,9 +48,11 @@ export default defineNuxtConfig({
     id: process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID,
     enabled: process.env.NODE_ENV === 'production'
   },
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://ta2mo.github.io'
+  },
   sitemap: {
     path: '/sitemap.xml',
-    hostname: 'https://ta2mo.github.io',
     generate: true,
     filter ({ routes }) {
       return routes.map((route) => {
