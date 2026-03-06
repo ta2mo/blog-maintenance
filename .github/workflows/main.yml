@@ -45,7 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NUXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NUXT_PUBLIC_GA_MEASUREMENT_ID }}
-      NODE_ENV: production
     steps:
       - uses: actions/checkout@v3
       
@@ -68,8 +67,9 @@ jobs:
         
       - name: Generate
         working-directory: nuxt-template
-        run: |
-          npm run generate
+        env:
+          NODE_ENV: production
+        run: npm run generate
         
       - name: Cache node modules
         uses: actions/cache@v3
