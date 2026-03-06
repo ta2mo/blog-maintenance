@@ -43,6 +43,9 @@ jobs:
   generate:
     needs: build
     runs-on: ubuntu-latest
+    env:
+      NUXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NUXT_PUBLIC_GA_MEASUREMENT_ID }}
+      NODE_ENV: production
     steps:
       - uses: actions/checkout@v3
       

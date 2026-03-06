@@ -41,8 +41,13 @@ export default defineNuxtConfig({
     'assets/main.scss'
   ],
   modules: [
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    'nuxt-gtag'
   ],
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID,
+    enabled: process.env.NODE_ENV === 'production'
+  },
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://ta2mo.github.io',
