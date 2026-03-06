@@ -14,29 +14,26 @@
       <div class="level-left is-left">
         <div class="level-item">
           {{ if .newerPost }}
-          <router-link class="is-right is-pulled-left" to="/post/{{ .newerPost.FileName }}">
+          <NuxtLink class="is-right is-pulled-left" to="/post/{{ .newerPost.FileName }}">
             <p class="heading">←Newer</p>
             <span>{{ .newerPost.Header.Title }}</span>
-          </router-link>
+          </NuxtLink>
           {{ end }}
         </div>
       </div>
       <div class="level-right is-right">
         <div class="level-item">
           {{ if .olderPost }}
-          <router-link class="is-left" to="/post/{{ .olderPost.FileName }}">
+          <NuxtLink class="is-left" to="/post/{{ .olderPost.FileName }}">
             <p class="heading">Older→</p>
             <span>{{ .olderPost.Header.Title }}</span>
-          </router-link>
+          </NuxtLink>
           {{ end }}
         </div>
       </div>
     </nav>
   </div>
 </template>
-
-<script lang="ts">
-</script>
 
 <style scoped>
   h1.title {

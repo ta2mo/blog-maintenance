@@ -3,11 +3,11 @@
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <router-link to="/">
+          <NuxtLink to="/">
             <h1 class="title">
               blog ta2mo
             </h1>
-          </router-link>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -40,7 +40,7 @@
 .page-enter-active, .page-leave-active {
   transition: opacity .4s;
 }
-.page-enter, .page-leave-to {
+.page-enter-from, .page-leave-to {
   opacity: 0;
 }
 </style>
