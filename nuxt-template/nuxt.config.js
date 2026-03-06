@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          quietDeps: true
         }
       }
     }
