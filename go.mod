@@ -1,13 +1,13 @@
 module github.com/ta2mo/blog-maintenance
 
-go 1.23.0
+go 1.25.0
 
 require (
 	github.com/microcosm-cc/bluemonday v1.0.16
 	github.com/russross/blackfriday v1.5.2
 	github.com/shurcooL/github_flavored_markdown v0.0.0-20181002035957-2122de532470
 	github.com/urfave/cli v1.20.0
-	golang.org/x/net v0.38.0
+	golang.org/x/net v0.55.0
 )
 
 require (
