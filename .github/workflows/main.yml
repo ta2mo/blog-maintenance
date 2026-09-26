@@ -62,7 +62,11 @@ jobs:
           
       - name: Install dependencies
         working-directory: nuxt-template
-        run: npm install
+        run: npm ci
+        
+      - name: Lint
+        working-directory: nuxt-template
+        run: npm run lint
         
       - name: Typecheck
         working-directory: nuxt-template
