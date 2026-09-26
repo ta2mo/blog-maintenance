@@ -12,10 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v7
         with:
           go-version: '1.25'
           
@@ -26,7 +26,7 @@ jobs:
         run: ./blog-maintenance convert
         
       - name: Cache Go modules
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: ~/go/src/github.com/ta2mo/blog-maintenance
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Upload nuxt-template as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nuxt-template
           path: nuxt-template
@@ -47,16 +47,16 @@ jobs:
       NUXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NUXT_PUBLIC_GA_MEASUREMENT_ID }}
       NUXT_PUBLIC_SITE_URL: ${{ vars.NUXT_PUBLIC_SITE_URL }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       
       - name: Download nuxt-template artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: nuxt-template
           path: nuxt-template
       
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '26'
           
@@ -79,7 +79,7 @@ jobs:
         run: npm run generate
         
       - name: Cache node modules
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: nuxt-template/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('nuxt-template/package-lock.json') }}
@@ -87,7 +87,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Upload generated files as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: generated-files
           path: nuxt-template/.output/public
@@ -97,10 +97,10 @@ jobs:
     needs: generate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       
       - name: Download generated files
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: generated-files
           path: generated-files
