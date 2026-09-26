@@ -278,15 +278,14 @@ a:hover {
   background: color-mix(in srgb, var(--legacy-muted-surface) 85%, var(--legacy-bg));
 }
 
-.label,
-.lable {
+.label {
   color: var(--legacy-muted-text);
   font-size: 0.75rem;
   font-weight: 700;
 }
 
 .label.is-small,
-.lable.is-medium {
+.label.is-medium {
   font-size: 1.25rem;
 }
 
