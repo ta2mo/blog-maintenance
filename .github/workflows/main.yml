@@ -62,9 +62,15 @@ jobs:
           
       - name: Install dependencies
         working-directory: nuxt-template
-        run: |
-          npm install
-          npm install postcss-custom-properties --save-dev
+        run: npm ci
+        
+      - name: Lint
+        working-directory: nuxt-template
+        run: npm run lint
+        
+      - name: Typecheck
+        working-directory: nuxt-template
+        run: npm run typecheck
         
       - name: Generate
         working-directory: nuxt-template
