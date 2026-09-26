@@ -22,13 +22,6 @@ export default defineNuxtConfig({
       ]
     }
   },
-  postcss: {
-    plugins: {
-      'postcss-custom-properties': {
-        warnings: false
-      }
-    }
-  },
   vite: {
     css: {
       preprocessorOptions: {
