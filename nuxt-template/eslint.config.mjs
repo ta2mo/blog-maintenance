@@ -15,7 +15,12 @@ export default createConfigForNuxt({
       'node_modules/',
       '.nuxt/',
       '.output/',
-      'dist/'
+      'dist/',
+      // `./blog-maintenance convert` の生成物（リポジトリルートの .gitignore と対応）
+      'pages/post/*.vue',
+      'components/PostList.vue',
+      'components/sidebar/RecentPost.vue',
+      'components/sidebar/Category.vue'
     ]
   })
   .append({
