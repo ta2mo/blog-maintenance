@@ -10,6 +10,7 @@
     "start": "nuxt preview",
     "generate": "nuxt generate",
     "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
     "precommit": "npm run lint"
   },
   "config": {
@@ -34,6 +35,7 @@
     "nuxt": "^4.5.2",
     "sass": "^1.104.1",
     "sass-loader": "^17.0.1",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.11"
   }
 }
