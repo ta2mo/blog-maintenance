@@ -2,7 +2,7 @@
   <div class="content is-medium">
     {{ range . }}
     <div class="box">
-      <span class="lable is-medium">{{ .Header.Date.Format "2006-01-02" }}</span>
+      <span class="label is-medium">{{ .Header.Date.Format "2006-01-02" }}</span>
       <NuxtLink to="/post/{{ .FileName }}">
         <h1 id="{{ .FileName }}" class="title">{{ .Header.Title }}</h1>
       </NuxtLink>
