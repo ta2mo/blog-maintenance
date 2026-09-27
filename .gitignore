@@ -89,3 +89,6 @@ blog-maintenance
 
 # temp docs for AI
 tmp
+
+# macOS
+.DS_Store
